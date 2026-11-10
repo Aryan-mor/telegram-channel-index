@@ -1,0 +1,17 @@
+services:
+  index:
+    image: ghcr.io/aryan-mor/telegram-channel-index:latest
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./data:/data
+    # The bot polls Telegram, so no port is opened.
+    mem_limit: 128m
+    cpus: 0.5
+    read_only: true
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+    logging:
+      driver: json-file
+      options: {max-size: "10m", max-file: "3"}

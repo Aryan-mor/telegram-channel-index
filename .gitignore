@@ -1,0 +1,6 @@
+.env
+data/
+*.db
+*.session
+/channel-index
+/channel-index.exe
